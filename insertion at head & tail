@@ -1,0 +1,61 @@
+// linked-list 
+#include <iostream> 
+using namespace std; 
+ // node consist of data & adress of next node 
+class Node { 
+    public: 
+    int data;      // data  
+    Node* next;  // address of next node 
+     
+    // constructor 
+    Node(int data){ 
+        this -> data = data;   
+        this -> next = NULL;   
+    } 
+};
+    void InsertAtTail(Node* &tail, int data){
+        Node* temp = new Node(data);
+        tail -> next = temp;
+        tail = temp;
+        
+    }
+    void InsertAtHead(Node* &head, int data){ 
+        // new node creation 
+        Node* temp = new Node(data); 
+        temp -> next = head; 
+        head = temp; 
+    } 
+    // travering a linked-list 
+    void printing(Node* &head){ 
+        Node* temp = head; 
+         
+        while(temp != NULL){ 
+            cout << temp -> data << " ";
+            temp = temp -> next; 
+        } 
+        cout << endl; 
+    }
+int main() { 
+     
+   //created a new node 
+    Node* node1 = new Node(10); 
+    // cout << node1 -> data << endl; 
+    // cout << node1 -> next << endl; 
+     
+    //head is pointing to node1 
+    Node* head1 = node1; 
+    Node* tail = node1;
+    
+    printing(head1); 
+    
+    // insert at tail
+    InsertAtTail(tail,16);
+    InsertAtTail(tail,19);
+    
+    //inset at head
+    InsertAtHead(head1,14);
+    InsertAtHead(head1,1);
+    
+    printing(head1); 
+    return 0; 
+}
